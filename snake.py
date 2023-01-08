@@ -14,22 +14,31 @@ class Snake:
         self.create_snake()
         self.head = self.segments[0]
 
-    # create_snake creates square snake objects
+    # create_snake  calls add_segment() at to create snake
     def create_snake(self):
         for position in STARTING_POSITIONS:
-            snake_fragment = Turtle(shape="square")
-            snake_fragment.penup()
-            snake_fragment.color("white")
-            snake_fragment.goto(position)
-            self.segments.append(snake_fragment)
+            self.add_segment(position)
 
-    # snake_move starts at the tail and moves each snake fragment towards the position of the next fragment
+    # add_segment() creates Turtle object called snake_fragment and appends to fragment list
+    def add_segment(self, position: tuple):
+        snake_fragment = Turtle(shape="square")
+        snake_fragment.penup()
+        snake_fragment.color("white")
+        snake_fragment.goto(position)
+        snake_fragment.speed("fastest")
+        self.segments.append(snake_fragment)
+
+    # snake_move() starts at the tail and moves each snake fragment towards the position of the next fragment
     def snake_move(self):
         for seg_num in range(len(self.segments) - 1, 0, -1):
             new_x = self.segments[seg_num - 1].xcor()
             new_y = self.segments[seg_num - 1].ycor()
             self.segments[seg_num].goto(new_x, new_y)
         self.head.forward(20)
+
+    # extend() calls add segment
+    def extend(self):
+        self.add_segment(self.segments[-1].position())
 
     # sets heading of snake to north
     def up(self):
@@ -41,12 +50,12 @@ class Snake:
         if self.head.heading() != UP:
             self.head.setheading(DOWN)
 
-    # sets heading of snake to west
+    # sets heading of snake to east
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
 
-    # sets heading of snake to east
+    # sets heading of snake to west
     def left(self):
         if self.head.heading() != RIGHT:
             self.head.setheading(LEFT)
