@@ -1,10 +1,20 @@
 from turtle import Turtle
+import random
 
 
-class Food(Turtle):
+class Food:
 
-    def __int__(self):
-        super().__init__()
-        self.shape("circle")
-        self.penup()
-        self.shapesize(stretch_len=0.5, stretch_wid=0.5)
+    def __init__(self):
+        self.create_food()
+
+    @staticmethod
+    def create_food():
+        food = Turtle(shape="circle")
+        food.color("teal")
+        food.penup()
+        food.shapesize(stretch_wid=.5, stretch_len=.5)
+        food.speed("fastest")
+        random_x = random.randint(-280, 280)
+        random_y = random.randint(-280, 280)
+        food.goto(random_x, random_y)
+

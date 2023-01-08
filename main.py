@@ -1,6 +1,7 @@
-import time
-from turtle import Turtle, Screen
+from turtle import Screen
 from snake import Snake
+from food import Food
+import time
 
 # Create screen, set dimensions and color
 screen = Screen()
@@ -9,7 +10,9 @@ screen.bgcolor("black")
 screen.title("My Snake Game")
 screen.tracer(0)
 
+# Create snake and food object
 snake = Snake()
+food = Food()
 
 # Allow screen to listen to user inputs
 screen.listen()
