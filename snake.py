@@ -1,10 +1,7 @@
 from turtle import Turtle
-STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
-MOVE_DISTANCE = 20
-UP = 90
-DOWN = 270
-RIGHT = 0
-LEFT = 180
+import json
+data_file = open('constants.json')
+CONSTANTS = json.load(data_file)
 
 
 class Snake:
@@ -16,7 +13,7 @@ class Snake:
 
     # create_snake  calls add_segment() at to create snake
     def create_snake(self):
-        for position in STARTING_POSITIONS:
+        for position in CONSTANTS["STARTING_POSITIONS"]:
             self.add_segment(position)
 
     # add_segment() creates Turtle object called snake_fragment and appends to fragment list
@@ -34,7 +31,7 @@ class Snake:
             new_x = self.segments[seg_num - 1].xcor()
             new_y = self.segments[seg_num - 1].ycor()
             self.segments[seg_num].goto(new_x, new_y)
-        self.head.forward(20)
+        self.head.forward(CONSTANTS["MOVE_DISTANCE"])
 
     # extend() calls add segment
     def extend(self):
@@ -42,20 +39,20 @@ class Snake:
 
     # sets heading of snake to north
     def up(self):
-        if self.head.heading() != DOWN:
-            self.head.setheading(UP)
+        if self.head.heading() != CONSTANTS["DOWN"]:
+            self.head.setheading(CONSTANTS["UP"])
 
     # sets heading of snake to south
     def down(self):
-        if self.head.heading() != UP:
-            self.head.setheading(DOWN)
+        if self.head.heading() != CONSTANTS["UP"]:
+            self.head.setheading(CONSTANTS["DOWN"])
 
     # sets heading of snake to east
     def right(self):
-        if self.head.heading() != LEFT:
-            self.head.setheading(RIGHT)
+        if self.head.heading() != CONSTANTS["LEFT"]:
+            self.head.setheading(CONSTANTS["RIGHT"])
 
     # sets heading of snake to west
     def left(self):
-        if self.head.heading() != RIGHT:
-            self.head.setheading(LEFT)
+        if self.head.heading() != CONSTANTS["RIGHT"]:
+            self.head.setheading(CONSTANTS["LEFT"])
