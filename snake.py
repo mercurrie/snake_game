@@ -33,6 +33,14 @@ class Snake:
             self.segments[seg_num].goto(new_x, new_y)
         self.head.forward(CONSTANTS["MOVE_DISTANCE"])
 
+    # clear list of snake segments and creates a new snake
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(CONSTANTS["DEAD_SNAKE_RELOCATION"])
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[CONSTANTS["HEAD_SEGMENT"]]
+
     # extend() calls add segment
     def extend(self):
         self.add_segment(self.segments[-1].position())

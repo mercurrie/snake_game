@@ -37,5 +37,6 @@
   "DOWN_ARROW": "Down",
   "LEFT_ARROW": "Left",
   "RIGHT_ARROW": "Right",
-  "HEAD_SEGMENT": 0
+  "HEAD_SEGMENT": 0,
+  "DEAD_SNAKE_RELOCATION": [1000,1000]
 }
