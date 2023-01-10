@@ -9,11 +9,11 @@ class Food(Turtle):
 
     def __init__(self):
         super().__init__()
-        self.shape("circle")
-        self.color("red")
+        self.shape(CONSTANTS["FOOD_SHAPE"])
+        self.color(CONSTANTS["FOOD_COLOR"])
         self.penup()
         self.shapesize(CONSTANTS["FOOD_WIDTH"], CONSTANTS["FOOD_HEIGHT"])
-        self.speed("fastest")
+        self.speed(CONSTANTS["FOOD_SPAWN_SPEED"])
         self.refresh()
 
     # Generates a random location for the food

@@ -9,7 +9,7 @@ class Snake:
     def __init__(self):
         self.segments = []
         self.create_snake()
-        self.head = self.segments[0]
+        self.head = self.segments[CONSTANTS["HEAD_SEGMENT"]]
 
     # create_snake  calls add_segment() at to create snake
     def create_snake(self):
@@ -18,11 +18,11 @@ class Snake:
 
     # add_segment() creates Turtle object called snake_fragment and appends to fragment list
     def add_segment(self, position: tuple):
-        snake_fragment = Turtle(shape="square")
+        snake_fragment = Turtle(CONSTANTS["SNAKE_SHAPE"])
         snake_fragment.penup()
-        snake_fragment.color("white")
+        snake_fragment.color(CONSTANTS["SNAKE_COLOR"])
         snake_fragment.goto(position)
-        snake_fragment.speed("fastest")
+        snake_fragment.speed(CONSTANTS["SNAKE_SPEED"])
         self.segments.append(snake_fragment)
 
     # snake_move() starts at the tail and moves each snake fragment towards the position of the next fragment

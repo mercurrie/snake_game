@@ -12,9 +12,9 @@ def play_game():
     # Create screen, set dimensions and color
     screen = Screen()
     screen.setup(CONSTANTS["SCREEN_WIDTH"], CONSTANTS["SCREEN_HEIGHT"])
-    screen.bgcolor("black")
-    screen.title("My Snake Game")
-    screen.tracer(0)
+    screen.bgcolor(CONSTANTS["SCREEN_COLOR"])
+    screen.title(CONSTANTS["GAME_TITLE"])
+    screen.tracer(CONSTANTS["ANIMATION_OFF"])
 
     # Create snake and food object
     snake = Snake()
@@ -22,10 +22,10 @@ def play_game():
     scoreboard = Scoreboard()
     # Allow screen to listen to user inputs
     screen.listen()
-    screen.onkey(snake.up, "w")
-    screen.onkey(snake.down, "s")
-    screen.onkey(snake.right, "d")
-    screen.onkey(snake.left, "a")
+    screen.onkey(snake.up, CONSTANTS["UP_ARROW"])
+    screen.onkey(snake.down, CONSTANTS["DOWN_ARROW"])
+    screen.onkey(snake.right, CONSTANTS["RIGHT_ARROW"])
+    screen.onkey(snake.left, CONSTANTS["LEFT_ARROW"])
 
     game_is_on = True
 
